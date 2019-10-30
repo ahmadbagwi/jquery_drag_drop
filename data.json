@@ -1,0 +1,101 @@
+[{
+                "activityType": "practice",
+                "title": "Q&A",                    
+                "Services": "Q&A",                    
+                "ServiceTemplate": "DND",
+                "type": "question",
+                "quizview": "SinglePage/onebyone",
+                "Puzzeldata": {
+                    "Row": 3,
+                    "col": 3,
+                    "Quizimage": "ashdgahdgagds.jpg"
+                },
+                "designParamiter": {
+                   "header": true,
+                   "header-background-color": "rgba(255,255,255,0)",
+                   "header-sado-color": "rgba(255,255,255,0)",
+                   "logo": true,
+                   "title": "Subtema 1. Keberagaman Budaya Bangsaku",
+                   "fullscreen": true,
+                   "holder-color": "#0066ff",
+                   "holder-bg": "image/dndbg.jpg",
+                   "theem": ""
+               },
+               "instructions": "<ul><li>Untuk mulai bermain, pengguna meng-klik potongan teka-teki untuk mengubah pertanyaannya.</li><li>Untuk setiap jawaban yang benar, potongan gambar akan ditampilkan di tempat yang sesuai.</li><li>Permainan ini memiliki waktu, pengguna memiliki 5 detik pada setiap pertanyaannya. Sebagai contoh jika ada 6 pertanyaan, pengguna memiliki 30 detik untuk menyelesaikan teka-teki tersebut.</li><li>Hanya diperbolehkan 1 kali percobaan untuk setiap pertanyaan.</li><li>Hasil akan disampaikan setelah semua pertanyaan dijawab.</li></ul>","language" : {"language":"bahasa","font":"Arial","instruction":"Instruksi\/Perintah","start":"Mulai","continue":"continue..","divided":"\/","next":"NEXT","previous":"previous","submit":"Submit","rightpopup":"Bagus!","wrongpopup":"Try again","rightoption":"Right Option","explaination":"Explaination","playAgain":"Replay","shortreport":"Laporan singkat","totalQuestions":"Total pertanyaan","totalAttempted":"Total pertanyaan yang dicoba","totalSkippedAnswers":"Total pertanyaan yang dilewati","totalRightAnswers":"Total jawaban yang benar","percentage":"Persentase jawaban yang benar","rightAnserinfirstAttamped":"No. of Right Answers in First Attempt","rightAnserinsecAttamped":"No. of Right Answers in Second Attempt","totalwrong":"Total jawaban yang salah","detailreport":"Detail laporan","question":"Pertanyaan","yourAnswer":"Jawabanmu","correctAnswer":"Jawaban yang benar","restart":"Ulang kembali","notAttemped":"Belum dijawab","submited":"Submit"},
+               
+               "data":[{
+                    "questiondata": {
+                        "questionid": 44,
+                        "questiontype": "Objective",
+                        "optionBehaviour": "",
+                        "questionmarks": 1,
+                        "questionallowtime": 5,
+                        "explanatation": "",
+                        "ques_year": null,
+                        "question": "Dipetik",
+                        "questionImg": "",
+                        "ques_difficulty": 1
+                    },
+                    "optiondata": {
+                        "options": []
+                    },                   
+                    "rightanswerdata": {
+                        "rightanswer": [ {
+                            "answerid": 65,
+                            "answer": "Sasando",
+                            "answerImg": ""
+                        },{
+                            "answerid": 80,
+                            "answer": "Kecapi",
+                            "answerImg": ""
+                        }]
+		         } },{
+                    "questiondata": {
+                        "questionid": 29,
+                        "questiontype": "Objective",
+                        "optionBehaviour": "",
+                        "questionmarks": 1,
+                        "questionallowtime": 5,
+                        "explanatation": "",
+                        "ques_year": null,
+                        "question": "Dipukul",
+                        "questionImg": "",
+                        "ques_difficulty": 1
+                    },
+                    "optiondata": {
+                        "options": []
+                    },                   
+                    "rightanswerdata": {
+                        "rightanswer": [ {
+                            "answerid": 36,
+                            "answer": "Kolintang",
+                            "answerImg": ""
+                        }]
+		         } },{
+                    "questiondata": {
+                        "questionid": 21,
+                        "questiontype": "Objective",
+                        "optionBehaviour": "",
+                        "questionmarks": 1,
+                        "questionallowtime": 5,
+                        "explanatation": "",
+                        "ques_year": null,
+                        "question": "Ditiup",
+                        "questionImg": "",
+                        "ques_difficulty": 1
+                    },
+                    "optiondata": {
+                        "options": []
+                    },                   
+                    "rightanswerdata": {
+                        "rightanswer": [ {
+                            "answerid": 53,
+                            "answer": "Serunai",
+                            "answerImg": ""
+                        },{
+                            "answerid": 56,
+                            "answer": "Seruling",
+                            "answerImg": ""
+                        }]
+		         } }]
+                    }]

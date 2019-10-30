@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Snap to element or grid</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+    integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  <style>
+        #jawaban1, #jawaban2, #jawaban3 { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+        #pertanyaan1, #pertanyaan2, #pertanyaan3 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <div id="jawaban1" class="ui-widget-header">
+                <p>Jawaban 1</p>
+            </div>
+        </td>
+        <td>
+            <div id="jawaban2" class="ui-widget-header">
+                <p>Jawaban 2</p>
+            </div>
+        </td>
+        <td>
+            <div id="jawaban3" class="ui-widget-header">
+                <p>Jawaban 3</p>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="pertanyaan1" class="draggable ui-widget-content">
+  <p>Pertanyaan 1</p>
+</div>
+<div id="pertanyaan2" class="draggable ui-widget-content">
+    <p>Pertanyaan 2</p>
+</div>
+<div id="pertanyaan3" class="draggable ui-widget-content">
+    <p>Pertanyaan 3</p>
+</div>
+ <div class="teskonten" style="margin-top: 160px;">
+    <ul id="testdata"></ul>
+ </div>
+ 
+</body>
+<script>
+    //Skrip ini untuk percobaan bahwa setiap pertanyaan hanya bisa didrag ke kotak jawaban yang sesuai
+    $("#pertanyaan1, #pertanyaan2, #pertanyaan3").draggable({ revert: 'invalid' });
+
+    $("#pertanyaan1").mousedown(function () {
+        $("#jawaban1").droppable({
+            accept: '#pertanyaan1',
+            activeClass: 'ui-state-hover',
+        });
+    });
+
+    $("#pertanyaan2").mousedown(function () {
+        $("#jawaban2").droppable({
+            accept: '#pertanyaan2',
+            activeClass: 'ui-state-hover',
+        });
+    });
+
+    $("#pertanyaan3").mousedown(function () {
+        $("#jawaban3").droppable({
+            accept: '#pertanyaan3',
+            activeClass: 'ui-state-hover',
+        });
+    });
+</script>
+
+<script>
+    //Script ini untuk mengambil nested item file json
+    $.ajax({
+        type: "GET",
+        dataType: "JSON",
+        url: "data.json",
+        success: processJSON
+    });
+    //Setiap komponen data yang berbeda array diulangi kembali mulai dari 0
+    function processJSON(data) {
+        $.each(data, function (i, item) {
+            $("<li></li>").html('<strong>Pertanyaan:</strong> ' + item.data[0].rightanswerdata['rightanswer'][0]['answer'] + '<strong> Jawaban </strong>: ' + item.data[1].questiondata['question']).appendTo('#testdata');
+        });
+    }
+</script>
+
+</html>
