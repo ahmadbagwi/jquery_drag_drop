@@ -11,7 +11,8 @@
   <style>
         #jawaban1, #jawaban2, #jawaban3 { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
         #pertanyaan1, #pertanyaan2, #pertanyaan3 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
-        .pertanyaan {height: 100px; width: 100px; background-color: gray; border: 1px solid burlywood;}
+        .pertanyaan {padding:2px; height: 100px; width: 100px; background-color: white; margin:0 auto;}
+        .isi-pertanyaan {height: 60px; width: 80px; background-color: white; color: black;}
   </style>
 </head>
 <body>
@@ -19,22 +20,37 @@
     <tr>
         <td>
             <div id="jawaban1" class="ui-widget-header">
-                <p>Jawaban 1</p>
+                <p>Dipetik</p>
             </div>
         </td>
         <td>
             <div id="jawaban2" class="ui-widget-header">
-                <p>Jawaban 2</p>
+                <p>Dipukul</p>
             </div>
         </td>
         <td>
             <div id="jawaban3" class="ui-widget-header">
-                <p>Jawaban 3</p>
+                <p>Ditiup</p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <div id="pertanyaan" class="pertanyaan">
+                <div id="isi-pertanyaan1" class="isi-pertanyaan draggable">
+                    Pertanyaan1
+                </div>
+                <div id="isi-pertanyaan2" class="isi-pertanyaan draggable" style="display: none;">
+                    Pertanyaan2
+                </div>
+                <div id="isi-pertanyaan3" class="isi-pertanyaan draggable" style="display: none;">
+                    Pertanyaan3
+                </div>
             </div>
         </td>
     </tr>
 </table>
-
+<!--  
 <div id="pertanyaan1" class="draggable ui-widget-content">
     <p>Pertanyaan 1</p>
 </div>
@@ -48,14 +64,12 @@
 <div class="teskonten" style="margin-top: 160px;">
     <ul id="testdata"></ul>
 </div>
- 
-<div id="pertanyaan" class="draggable pertanyaan">
-    <p>Ini harus bisa Replace</p>
-</div>
+-->
+
 </body>
 <script>
     //Skrip ini untuk percobaan bahwa setiap pertanyaan hanya bisa didrag ke kotak jawaban yang sesuai
-    $("#pertanyaan1, #pertanyaan2, #pertanyaan3, #pertanyaan").draggable({ revert: 'invalid' });
+    /*$("#pertanyaan1, #pertanyaan2, #pertanyaan3, .isi-pertanyaan").draggable({ revert: 'invalid' });
 
     $("#pertanyaan1").mousedown(function () {
         $("#jawaban1").droppable({
@@ -74,6 +88,25 @@
     $("#pertanyaan3").mousedown(function () {
         $("#jawaban3").droppable({
             accept: '#pertanyaan3',
+            activeClass: 'ui-state-hover',
+        });
+    });*/
+
+    $(".isi-pertanyaan").draggable({ revert: 'invalid' });
+
+    $(".isi-pertanyaan").mousedown(function () {
+        $("#jawaban1").droppable({
+            accept: '#isi-pertanyaan1',
+            activeClass: 'ui-state-hover',
+        });
+
+        $("#jawaban2").droppable({
+            accept: '#isi-pertanyaan2',
+            activeClass: 'ui-state-hover',
+        });
+
+        $("#jawaban3").droppable({
+            accept: '#isi-pertanyaan3',
             activeClass: 'ui-state-hover',
         });
     });
@@ -100,6 +133,16 @@
 
     $(function() {
         $("#pertanyaan").delay(3000).fadeIn(3000);
+        $(".isi-pertanyaan").mouseup(function(){
+            //$(".isi-pertanyaan").append( "<h2>New heading</h2>" );
+            //$("#pertanyaan").append("<div id='isi-pertanyaan2' class='isi-pertanyaan draggable'>dua</div>").fadeIn(3000);
+            $("#isi-pertanyaan2").fadeIn(3000).show();
+        });
+        $("#isi-pertanyaan2").mouseup(function(){
+            //$(".isi-pertanyaan").append( "<h2>New heading</h2>" );
+            //$("#pertanyaan").append("<div id='isi-pertanyaan2' class='isi-pertanyaan draggable'>dua</div>").fadeIn(3000);
+            $("#isi-pertanyaan3").fadeIn(3000).show();
+        });
     });
 </script>
 
