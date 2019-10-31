@@ -50,6 +50,11 @@
         </td>
     </tr>
 </table>
+
+<div class="teskonten" style="margin-top: 50px;">
+    <h2>Generate Json data</h2>
+    <ul id="testdata"></ul>
+</div>
 <!--  
 <div id="pertanyaan1" class="draggable ui-widget-content">
     <p>Pertanyaan 1</p>
@@ -61,9 +66,6 @@
     <p>Pertanyaan 3</p>
 </div>
 
-<div class="teskonten" style="margin-top: 160px;">
-    <ul id="testdata"></ul>
-</div>
 -->
 
 </body>
@@ -124,6 +126,16 @@
     function processJSON(data) {
         $.each(data, function (i, item) {
             $("<li></li>").html('<strong>Pertanyaan:</strong> ' + item.data[0].rightanswerdata['rightanswer'][1]['answer'] + '<strong> Jawaban </strong>: ' + item.data[0].questiondata['question']).appendTo('#testdata');
+            console.log(item.data.length);
+            console.log(item.data[0].rightanswerdata['rightanswer'].length);
+
+            for (let j = 0; j < item.data.length; j++) {
+               console.log(item.data[j].questiondata['question']);
+    
+                for (let k = 0; k < item.data[j].rightanswerdata['rightanswer'].length; k++) {
+                    console.log(item.data[j].rightanswerdata['rightanswer'][k]['answer']);
+                }
+            }
         });
     }
 </script>
