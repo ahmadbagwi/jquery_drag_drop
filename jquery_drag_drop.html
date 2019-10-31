@@ -9,101 +9,23 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   
   <style>
-        #jawaban1, #jawaban2, #jawaban3 { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
-        #pertanyaan1, #pertanyaan2, #pertanyaan3 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
-        .pertanyaan {padding:2px; height: 100px; width: 100px; background-color: white; margin:0 auto;}
-        .isi-pertanyaan {height: 60px; width: 80px; background-color: white; color: black;}
         .item-question { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; display:inline; border:1px solid gray; }
         .item-answer { width: auto; height: auto; padding: 1em; float: left; margin: 10px; display:inline; border:1px solid gray; }
   </style>
 </head>
 <body>
-<table>
-    <tr>
-        <td>
-            <div id="jawaban1" class="ui-widget-header">
-                <p>Dipetik</p>
-            </div>
-        </td>
-        <td>
-            <div id="jawaban2" class="ui-widget-header">
-                <p>Dipukul</p>
-            </div>
-        </td>
-        <td>
-            <div id="jawaban3" class="ui-widget-header">
-                <p>Ditiup</p>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <div id="pertanyaan" class="pertanyaan">
-                <div id="isi-pertanyaan1" class="isi-pertanyaan draggable">
-                    Pertanyaan1
-                </div>
-                <div id="isi-pertanyaan2" class="isi-pertanyaan draggable" style="display: none;">
-                    Pertanyaan2
-                </div>
-                <div id="isi-pertanyaan3" class="isi-pertanyaan draggable" style="display: none;">
-                    Pertanyaan3
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
-
 <div class="teskonten" style="margin-top: 50px;">
-    <h2>Generate Json data</h2>
+    <h2>Test generate Json data</h2>
     <ul id="testdata"></ul>
 </div>
-<!--  
-<div id="pertanyaan1" class="draggable ui-widget-content">
-    <p>Pertanyaan 1</p>
-</div>
-<div id="pertanyaan2" class="draggable ui-widget-content">
-    <p>Pertanyaan 2</p>
-</div>
-<div id="pertanyaan3" class="draggable ui-widget-content">
-    <p>Pertanyaan 3</p>
-</div>
 
--->
-<table>
 <div class="question">
-
 </div>
 
 <div class="answer">
-
 </div>
-</table>
 </body>
 <script>
-    //Skrip ini untuk percobaan bahwa setiap pertanyaan hanya bisa didrag ke kotak jawaban yang sesuai
-    /*$("#pertanyaan1, #pertanyaan2, #pertanyaan3, .isi-pertanyaan").draggable({ revert: 'invalid' });
-
-    $("#pertanyaan1").mousedown(function () {
-        $("#jawaban1").droppable({
-            accept: '#pertanyaan1',
-            activeClass: 'ui-state-hover',
-        });
-    });
-
-    $("#pertanyaan2").mousedown(function () {
-        $("#jawaban2").droppable({
-            accept: '#pertanyaan2',
-            activeClass: 'ui-state-hover',
-        });
-    });
-
-    $("#pertanyaan3").mousedown(function () {
-        $("#jawaban3").droppable({
-            accept: '#pertanyaan3',
-            activeClass: 'ui-state-hover',
-        });
-    });*/
-
     $(".isi-pertanyaan").draggable({ revert: 'invalid' });
 
     $(".isi-pertanyaan").mousedown(function () {
@@ -112,15 +34,6 @@
             activeClass: 'ui-state-hover',
         });
 
-        $("#jawaban2").droppable({
-            accept: '#isi-pertanyaan2',
-            activeClass: 'ui-state-hover',
-        });
-
-        $("#jawaban3").droppable({
-            accept: '#isi-pertanyaan3',
-            activeClass: 'ui-state-hover',
-        });
     });
 </script>
 
@@ -137,28 +50,24 @@
         $.each(data, function (i, item) {
             $("<li></li>").html('<strong>Pertanyaan:</strong> ' + item.data[0].rightanswerdata['rightanswer'][1]['answer'] + '<strong> Jawaban </strong>: ' + item.data[0].questiondata['question']).appendTo('#testdata');
             console.log(item.data.length);
-            console.log(item.data[0].rightanswerdata['rightanswer'].length);
+            //console.log(item.data[0].rightanswerdata['rightanswer'].length);
 
             for (let j = 0; j < item.data.length; j++) {
-               //console.log(item.data[j].questiondata['question']);
                var question = item.data[j].questiondata['question'];
-               $(".question").append('<div id="'+question+'" class="item-question">'+question+'</div>');
-               //question.attr('id', question);
-               
-                for (let k = 0; k < item.data[j].rightanswerdata['rightanswer'].length; k++) {
-                    //console.log(item.data[j].rightanswerdata['rightanswer'][k]['answer']);
 
-                    
+               $(".question").append('<div id="'+question+'" class="item-question">'+question+'</div>');
+                              
+                for (let k = 0; k < item.data[j].rightanswerdata['rightanswer'].length; k++) {
+                    //console.log("a: "+item.data[j].questiondata['question']+"  b: "+item.data[j].rightanswerdata['rightanswer'][k]['answer']);
+
                     var rightanswer = item.data[j].rightanswerdata['rightanswer'][k]['answer'];
 
                     $(".answer").append('<div id="'+rightanswer+'" class="item-answer draggable">'+rightanswer+'</div>');
-
                     $(".item-answer").draggable({ revert: 'invalid' });
-
-                    //console.log("a: "+item.data[j].questiondata['question']+"  b: "+item.data[j].rightanswerdata['rightanswer'][k]['answer']);
-
+                    
                     var acceptquestion = item.data[j].questiondata['question'];
-                    console.log(acceptquestion);
+                    console.log(rightanswer);
+
                     $("#"+acceptquestion).droppable({
                         accept: "#"+rightanswer,
                         activeClass: 'ui-state-hover',
@@ -176,13 +85,9 @@
     $(function() {
         $("#pertanyaan").delay(800).fadeIn(2000);
         $(".isi-pertanyaan").mouseup(function(){
-            //$(".isi-pertanyaan").append( "<h2>New heading</h2>" );
-            //$("#pertanyaan").append("<div id='isi-pertanyaan2' class='isi-pertanyaan draggable'>dua</div>").fadeIn(3000);
             $("#isi-pertanyaan2").fadeIn(2000).show();
         });
         $("#isi-pertanyaan2").mouseup(function(){
-            //$(".isi-pertanyaan").append( "<h2>New heading</h2>" );
-            //$("#pertanyaan").append("<div id='isi-pertanyaan2' class='isi-pertanyaan draggable'>dua</div>").fadeIn(3000);
             $("#isi-pertanyaan3").fadeIn(2000).show();
         });
     });
