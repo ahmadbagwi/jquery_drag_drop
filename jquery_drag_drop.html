@@ -13,6 +13,8 @@
         #pertanyaan1, #pertanyaan2, #pertanyaan3 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
         .pertanyaan {padding:2px; height: 100px; width: 100px; background-color: white; margin:0 auto;}
         .isi-pertanyaan {height: 60px; width: 80px; background-color: white; color: black;}
+        .item-question { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; display:inline; border:1px solid gray; }
+        .item-answer { width: auto; height: auto; padding: 1em; float: left; margin: 10px; display:inline; border:1px solid gray; }
   </style>
 </head>
 <body>
@@ -67,7 +69,15 @@
 </div>
 
 -->
+<table>
+<div class="question">
 
+</div>
+
+<div class="answer">
+
+</div>
+</table>
 </body>
 <script>
     //Skrip ini untuk percobaan bahwa setiap pertanyaan hanya bisa didrag ke kotak jawaban yang sesuai
@@ -130,11 +140,31 @@
             console.log(item.data[0].rightanswerdata['rightanswer'].length);
 
             for (let j = 0; j < item.data.length; j++) {
-               console.log(item.data[j].questiondata['question']);
-    
+               //console.log(item.data[j].questiondata['question']);
+               var question = item.data[j].questiondata['question'];
+               $(".question").append('<div id="'+question+'" class="item-question">'+question+'</div>');
+               //question.attr('id', question);
+               
                 for (let k = 0; k < item.data[j].rightanswerdata['rightanswer'].length; k++) {
-                    console.log(item.data[j].rightanswerdata['rightanswer'][k]['answer']);
+                    //console.log(item.data[j].rightanswerdata['rightanswer'][k]['answer']);
+
+                    
+                    var rightanswer = item.data[j].rightanswerdata['rightanswer'][k]['answer'];
+
+                    $(".answer").append('<div id="'+rightanswer+'" class="item-answer draggable">'+rightanswer+'</div>');
+
+                    $(".item-answer").draggable({ revert: 'invalid' });
+
+                    //console.log("a: "+item.data[j].questiondata['question']+"  b: "+item.data[j].rightanswerdata['rightanswer'][k]['answer']);
+
+                    var acceptquestion = item.data[j].questiondata['question'];
+                    console.log(acceptquestion);
+                    $("#"+acceptquestion).droppable({
+                        accept: "#"+rightanswer,
+                        activeClass: 'ui-state-hover',
+                    });
                 }
+                
             }
         });
     }
